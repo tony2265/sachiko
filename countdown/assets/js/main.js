@@ -418,6 +418,7 @@ function myevent() {
 
 
 	const futureDate = new Date(tempYear, 10, 12, 20, 0, 0); //設定當前日期的後10天
+	//const futureDate = new Date(tempYear, 8, 29, 20, 0, 0); //設定當前日期的後10天
 
 	//取得所有時間元素
 	const year = futureDate.getFullYear();
@@ -430,14 +431,23 @@ function myevent() {
 
 	giveaway.textContent = `${year}/${month}/${date}(${weekday}) ${hours}:${(minutes<10)?"0"+minutes:minutes}`;
 
-	let iDays = parseInt(Math.abs(futureDate - tempDate) / 1000 / 60 / 60 / 24)
-	let ihours = parseInt(Math.abs(futureDate - tempDate) / 1000 / 60 / 60) % 24
-	let imins= parseInt(Math.abs(futureDate - tempDate) / 1000 / 60 ) % 60
-	let isecs= parseInt(Math.abs(futureDate - tempDate) / 1000 ) % 60
+	if ((futureDate - tempDate)>=0){
+		let iDays = parseInt((futureDate - tempDate) / 1000 / 60 / 60 / 24)
+		let ihours = parseInt(Math.abs(futureDate - tempDate) / 1000 / 60 / 60) % 24
+		let imins= parseInt(Math.abs(futureDate - tempDate) / 1000 / 60 ) % 60
+		let isecs= parseInt(Math.abs(futureDate - tempDate) / 1000 ) % 60
+	
+		items[0].textContent = `${(iDays<10)?"0"+iDays:iDays}`;
+		items[1].textContent = `${(ihours<10)?"0"+ihours:ihours}`;
+		items[2].textContent = `${(imins<10)?"0"+imins:imins}`;
+		items[3].textContent = `${(isecs<10)?"0"+isecs:isecs}`;
+		$(".one").fadeIn(1000);
+		$(".two").hide();
 
-	items[0].textContent = `${(iDays<10)?"0"+iDays:iDays}`;
-	items[1].textContent = `${(ihours<10)?"0"+ihours:ihours}`;
-	items[2].textContent = `${(imins<10)?"0"+imins:imins}`;
-	items[3].textContent = `${(isecs<10)?"0"+isecs:isecs}`;
+	}
+	else{
+		$(".one").hide();		
+		$(".two").fadeIn(1000);
 
+	}
 }

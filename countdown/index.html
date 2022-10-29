@@ -26,6 +26,18 @@
 
 <body onload="randombg()" class="is-preload" ondragstart="return false" style="overflow-y: auto;">
 
+    
+    <!-- <div class="video">
+        <iframe src="https://www.youtube.com/embed/25hfZYM-Atg?rel=0&autoplay=1&loop=1&mute=1&amp;showinfo=0″ frameborder=”0″ allow=”autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>      -->
+
+        <div class="video">
+          <video autoplay muted loop>
+            <source src="/images/sa.mp4" type="video/mp4">
+          </video>
+        </div>
+      
+
     <div id="wrapper">
         <!-- Header -->
         <header id="header">
@@ -34,18 +46,24 @@
             </div>
             <div class="content">
                 <div class="inner">
-                    <h1>1.0畢業典禮</h1>
+                    <h1 class="one" hidden>1.0畢業典禮</h1>
+                    <h1 class="two" hidden >2.0初配信</h1>
                     <h2 style="color:rgb(255 172 69) ;">《Sachiko Ch. 清水紗智子》</h2>
-                    <h3 class="giveaway"></h3>
-                    <h3>
+                    <h3 class="one giveaway" hidden></h3>
+                    <h3 class="two" hidden>2022/11/13(日) 20:00</h3>
+
+                    <h3 class="one" hidden>
                         <div class="deadline" style="color:#EBB156 ;">
                             <!-- 倒數<br> -->
                             <div class="par"><span class="deadline-format"></span></div> 天
                             <div class="par"><span class="deadline-format"></span></div> 小時
                             <div class="par"><span class="deadline-format"></span></div> 分
                             <div class="par"><span class="deadline-format"></span></div> 秒
-                        </div>
+                        </div> 
                     </h3>
+                <div class="two" hidden>
+                    <a style="margin-top: 10px;" target="_blank" href="https://youtu.be/UHqtOjqoCJY" class="two button primary">🌼陪紗紗啟程🌼</a>
+                </div>
 
                 </div>
             </div>
@@ -80,7 +98,7 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="https://apis.google.com/js/platform.js"></script>
-    <script>
+    <!-- <script>
         var random = Math.floor(Math.random() * 1) + 0;
         var bigSize = ["url('images/掛軸.jpg')"];
         setInterval(randombg, 2000);
@@ -88,7 +106,7 @@
             document.getElementById("bg").style.backgroundImage = bigSize[random];
         }
 
-    </script>
+    </script> -->
 </body>
 
 </html>
