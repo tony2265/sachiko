@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+
+<html lang="zh-Hant-TW">
+
+<head>
+
+    <title>花椰菜神壇</title>
+    <link rel="Shortcut Icon" type="image/x-icon" href="images/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="\|/花椰菜神明的神壇\|/">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/main.css" media>
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
+</head>
+
+<body onload="randombg()" class="is-preload" ondragstart="return false" style="overflow-y: auto;">
+
+    <div id="wrapper" style="top:-3vh;position:relative">
+        <!-- Header -->
+        <header id="header">
+            <div class="logo">
+                <a href="../index.html">
+                    <img alt="紗紗" class="logo" src="images/broocali.png"
+                        style="align-items:center;position: relative; top: 5vh;left: -2vh;">
+                </a>
+            </div>
+            <div class="content">
+                <div class="inner" style="height: 80vh;position: relative;left: -1vh;">
+                    <div class="container">
+                        <div class="form">
+                            <form style="left:-20%">
+                                <div style="height: 10vh;">
+                                    <div style="margin: 1%;">
+                                        <a style="position:relative;left: -13vh;top:-3vh">暱稱</a>
+                                    </div>
+                                    <div>
+                                        <input style="position:relative;top:-3vh" class="textNickName"
+                                            placeholder="EX:玉米" type="text" />
+                                    </div>
+                                </div>
+                                <div style="height:11vh">
+                                    <div>
+                                        <a style="position:relative;top:-2vh;left: -3vh;">想與花椰菜神有什麼互動？</a>
+                                    </div>
+                                    <div style="position:relative;left: 1vh;">
+                                        
+                                        <input type="radio" name="choose" class="get" id="get"
+                                            value="抽籤">抽籤（向花椰菜神明提出問題）<br>
+                                        <input type="radio" name="choose" class="wish" id="wish"
+                                            value="許願">許願（告訴花椰菜神明小秘密）
+                                    </div>
+                                </div>
+                                <div style="height: 15vh;">
+                                    <div class="textContentDiv">
+                                        <a style="position:relative;left:-35%;top:0vh">內容</a>
+                                        <input style="height: 11vh;position: relative;top:1vh" class="textContent"
+                                            placeholder="內容" type="text" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>
+                                        <a style="position:relative;left: 0vh; top:2vh">是否願意公開在直播或社交平台上</a>
+                                    </div>
+                                    <div style="position:relative;top:3vh;left:-11vh">
+                                        <div>
+                                            <input type="radio" name="agreement" class="yes" id="yes" value="是"
+                                                style="position:absolute;top:5%"><a
+                                                style="position:absolute;top:-1%;left: 59%;">是</a></input>
+                                        </div>
+                                        <div style="position:absolute;right:-5vh;top:5%">
+                                            <input type="radio" name="agreement" class="no" id="no" value="否"><a
+                                                style="position:absolute;top:-1%">否</a></input>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        </form>
+                        <div class="controller" style="position:relative;top:13vh;left:3vh;width: 30vh;">
+                            <input class="buttonClear" type="button" value="重置"
+                                style="position:relative;right:35%;top:-5vh" />
+                            <input class="buttonSend" type="button" value="傳送"
+                                style="position:relative;right:-5%;top:-5vh" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- Footer -->
+        <footer />
+
+    </div>
+
+    <!-- BG -->
+    <div id="bg"></div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://apis.google.com/js/platform.js"></script>
+    <script>
+        var random = Math.floor(Math.random() * 1) + 0;
+        var bigSize = ["url('images/temple.png')"];
+        setInterval(randombg, 2000);
+        function randombg() {
+            document.getElementById("bg").style.backgroundImage = bigSize[0];
+        }
+        if ($(document).height() > $(window).height()) {
+            $("html").addClass("noscroll");
+        } else {
+            $("html").addClass("fixWindow");
+        }
+        $("input.buttonClear").click(async () => {
+            window.location.reload();
+        });
+        $("input.buttonSend").click(async () => {
+            let selectType;
+            let agreement;
+            let textContent = await $("input.textContent").val();
+            let textNickName = await $("input.textNickName").val();
+            if (document.getElementById("get").checked) { selectType = "抽籤（詢問花椰菜神明問題）" };
+            if (document.getElementById("wish").checked) { selectType = "許願（默默地告訴花椰菜神明秘密）" };
+            if (document.getElementById("yes").checked) { agreement = "是" };
+            if (document.getElementById("no").checked) { agreement = "否" };
+            if (selectType == undefined || (agreement == undefined)) {
+                alert("好像有地方沒有填寫喔~")
+                return;
+            } else {
+                $.getScript(`https://docs.google.com/forms/d/e/1FAIpQLSdf-EmUYtBGaZbgZR4f3NpcO3_N4WEPWTjpCd8LpVNBFP1l8A/formResponse?entry.102339776=${textNickName}&entry.910045908=${selectType}&entry.1651358639=${textContent}&entry.379697939=${agreement}&submit=Submit`)
+                window.confirm("成功傳送");
+                window.location.reload();
+            }
+        });
+    </script>
+</body>
+
+</html>
