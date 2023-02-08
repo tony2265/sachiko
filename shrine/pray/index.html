@@ -63,7 +63,7 @@
                                         <a style="position:relative;top:-2vh;left: -3vh;">想與花椰菜神有什麼互動？</a>
                                     </div>
                                     <div style="position:relative;left: 1vh;">
-                                        
+
                                         <input type="radio" name="choose" class="get" id="get"
                                             value="抽籤">抽籤（向花椰菜神明提出問題）<br>
                                         <input type="radio" name="choose" class="wish" id="wish"
@@ -73,8 +73,8 @@
                                 <div style="height: 15vh;">
                                     <div class="textContentDiv">
                                         <a style="position:relative;left:-35%;top:0vh">內容</a>
-                                        <input style="height: 11vh;position: relative;top:1vh" class="textContent"
-                                            placeholder="內容" type="text" />
+                                        <textarea style="white-space: pre-line;" class="textContent" placeholder="想說的內容"></textarea>
+                                        <!-- <input style="height: 11vh;position: relative;top:1vh" /> -->
                                     </div>
                                 </div>
                                 <div>
@@ -141,7 +141,7 @@
         $("input.buttonSend").click(async () => {
             let selectType;
             let agreement;
-            let textContent = await $("input.textContent").val();
+            let textContent = await $("textarea.textContent").val();
             let textNickName = await $("input.textNickName").val();
             if (document.getElementById("get").checked) { selectType = "抽籤（詢問花椰菜神明問題）" };
             if (document.getElementById("wish").checked) { selectType = "許願（默默地告訴花椰菜神明秘密）" };
@@ -152,7 +152,7 @@
                 return;
             } else {
                 $.getScript(`https://docs.google.com/forms/d/e/1FAIpQLSdf-EmUYtBGaZbgZR4f3NpcO3_N4WEPWTjpCd8LpVNBFP1l8A/formResponse?entry.102339776=${textNickName}&entry.910045908=${selectType}&entry.1651358639=${textContent}&entry.379697939=${agreement}&submit=Submit`)
-                window.confirm("成功傳送");
+                window.confirm(`傳送成功`);
                 window.location.reload();
             }
         });
