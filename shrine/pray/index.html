@@ -9,7 +9,7 @@
     <meta property="og:title" content="花椰菜神社 | 許願中" />
     <meta itemprop="name" content="花椰菜神社 | 許願中" />
     <meta property="twitter:meta_title" content="花椰菜神社 | 許願中" />
-    <meta name="description" content="歡迎來到花椰菜神社，在這裡你可以放心傾訴你的秘密，向花椰菜神抽籤、許願，願花椰菜神祝福你。"/>
+    <meta name="description" content="歡迎來到花椰菜神社，在這裡你可以放心傾訴你的秘密，向花椰菜神抽籤、許願，願花椰菜神祝福你。" />
     <meta property="og:description" content="歡迎來到花椰菜神社，在這裡你可以放心傾訴你的秘密，向花椰菜神抽籤、許願，願花椰菜神祝福你。" />
     <meta itemprop="description" content="歡迎來到花椰菜神社，在這裡你可以放心傾訴你的秘密，向花椰菜神抽籤、許願，願花椰菜神祝福你。" />
     <meta property="twitter:description" content="歡迎來到花椰菜神社，在這裡你可以放心傾訴你的秘密，向花椰菜神抽籤、許願，願花椰菜神祝福你。" />
@@ -21,7 +21,7 @@
     <meta property="og:url" content="https://sachiko.dreamcity.studio/shrine/" />
     <meta property="og:type" content="Website" />
     <meta property="twitter:card" content="summary_large_image" />
-    
+
     <link rel="Shortcut Icon" type="image/x-icon" href="images/favicon.ico" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -73,7 +73,8 @@
                                 <div style="height: 15vh;">
                                     <div class="textContentDiv">
                                         <a style="position:relative;left:-35%;top:0vh">內容</a>
-                                        <textarea style="white-space: pre-line;" class="textContent" placeholder="想說的內容"></textarea>
+                                        <textarea style="white-space: pre-line;" class="textContent"
+                                            placeholder="想說的內容"></textarea>
                                         <!-- <input style="height: 11vh;position: relative;top:1vh" /> -->
                                     </div>
                                 </div>
@@ -124,6 +125,17 @@
     <script src="assets/js/main.js"></script>
     <script src="https://apis.google.com/js/platform.js"></script>
     <script>
+        async function send(url) {
+            await fetch(url, {
+                method: 'POST'
+            }).catch(() => {
+                window.confirm("傳送成功");
+                window.location.reload();
+            })
+        }
+
+
+
         var random = Math.floor(Math.random() * 1) + 0;
         var bigSize = ["url('images/temple.png')"];
         setInterval(randombg, 2000);
@@ -151,11 +163,12 @@
                 alert("好像有地方沒有填寫喔~")
                 return;
             } else {
-                $.getScript(`https://docs.google.com/forms/d/e/1FAIpQLSdf-EmUYtBGaZbgZR4f3NpcO3_N4WEPWTjpCd8LpVNBFP1l8A/formResponse?entry.102339776=${textNickName}&entry.910045908=${selectType}&entry.1651358639=${textContent}&entry.379697939=${agreement}&submit=Submit`)
-                window.confirm(`傳送成功`);
-                window.location.reload();
+                var url = `https://docs.google.com/forms/d/e/1FAIpQLSdf-EmUYtBGaZbgZR4f3NpcO3_N4WEPWTjpCd8LpVNBFP1l8A/formResponse?entry.102339776=${textNickName}&entry.910045908=${selectType}&entry.1651358639=${textContent}&entry.379697939=${agreement}&submit=Submit`;
+                await send(url);
             }
         });
+
+        
     </script>
 </body>
 
